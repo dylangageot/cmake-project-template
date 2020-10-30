@@ -62,7 +62,6 @@ Now we can build this project, and below we show three separate ways to do so.
 
 ```bash
 ❯ rm -rf build && mkdir build
-❯ git submodule init && git submodule update
 ❯ cd build
 ❯ cmake ..
 ❯ make && make install
@@ -124,11 +123,9 @@ Remainder: 112443477 % 12309324 = 1659561
 
 ### Building in CLion
 
-> **NOTE**: Since JetBrains software [does not officially support git submodules](https://youtrack.jetbrains.com/issue/IDEA-64024), you must run `git submodule init && git submodule update` before starting CLion on a freshly checked-out repo.
-
 > **NOTE**: We recommend that you copy file `.idea/workspace.xml.example` into `.idea/workspace.xml` **before starting CLion**. It will provide a good starting point for your project's workspace.
 
-Assuming you've done the above two steps, you can start CLion, and open the project's top level folder. CLion should automatically detect the top level `CMakeLists.txt` file and provide you with the full set of build targets.
+CLion should automatically detect the top level `CMakeLists.txt` file and provide you with the full set of build targets.
 
 Select menu option **Build   ➜ Build Project**, and then **Build ➜ Install**.
 
@@ -165,7 +162,6 @@ Tests:
  * A `test` folder with the automated tests and fixtures that mimics the directory structure of `src`.
  * For every C++ file in `src/A/B/<name>.cpp` there is a corresponding test file `test/A/B/<name>_test.cpp`
  * Tests compile into a single binary `test/bin/runner` that is run on a command line to run the tests.
- * `test/lib` folder with a git submodule in `test/lib/googletest`, and possibly other libraries.
 
 #### Contributing
 
