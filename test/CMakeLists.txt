@@ -35,5 +35,5 @@ endif()
 
 set(SOURCE_FILES src/divider_tests.cpp)
 
-add_executable(divider_tests ${SOURCE_FILES})
-target_link_libraries(divider_tests division gtest_main)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+target_link_libraries(${PROJECT_NAME} division gtest_main)
