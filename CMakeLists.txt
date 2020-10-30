@@ -5,8 +5,9 @@ project(cmake-project-template)
 set(CMAKE_CXX_STANDARD 17)
 
 # Add coverage flags.
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 --coverage -fprofile-arcs -ftest-coverage")
+option(CODE_COVERAGE "Enable code coverage" OFF)
+if((${CODE_COVERAGE} STREQUAL "ON") AND (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU"))
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -fprofile-arcs -ftest-coverage")
 endif()
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
