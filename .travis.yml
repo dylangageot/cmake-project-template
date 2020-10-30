@@ -98,7 +98,5 @@ script:
   - cd build/run
   - cmake ../..
   - make install
-  - cd ../..
-  - ./bin/divider_tests
-  - ./bin/divider 15 7
+  - ./test/divider_tests
 
