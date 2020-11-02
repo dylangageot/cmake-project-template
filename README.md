@@ -94,7 +94,7 @@ Remainder: 112443477 % 12309324 = 1659561
 
 #### Installing binaries and libraries
 
-To install the binary and the static library on the system, run the following commands:
+To install binaries and libraries on the system, run the following commands:
 
 ```bash
 ❯ pushd build
@@ -107,7 +107,17 @@ If you want to install in another location than system path, define the CMake va
 ```bash
 ❯ pushd build
 ❯ cmake .. -DCMAKE_INSTALL_PREFIX=/tmp/local
-❯ make install
+❯ sudo make install
+❯ popd
+```
+
+#### Uninstalling binaries and libraries
+
+To uninstall binaries and libraries from the system or specified installation directory in `CMAKE_INSTALL_PREFIX`, run the following commands:
+
+```bash
+❯ pushd build
+❯ sudo make uninstall
 ❯ popd
 ```
 
