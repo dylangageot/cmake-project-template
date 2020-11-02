@@ -23,4 +23,5 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/bin)
 add_subdirectory(src)
 add_subdirectory(test)
 
-
+# Uninstall target from grabbed from https://gist.github.com/royvandam/3033428.
+add_custom_target(uninstall ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/uninstall.cmake)
