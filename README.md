@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/kigster/cmake-project-template.svg?branch=master)](https://travis-ci.org/kigster/cmake-project-template)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkigster%2Fcmake-project-template.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkigster%2Fcmake-project-template?ref=badge_shield)
 [![codecov](https://codecov.io/gh/dylangageot/cmake-project-template/branch/master/graph/badge.svg?token=YUA97CZHC2)](https://codecov.io/gh/dylangageot/cmake-project-template)
-
+[![CodeFactor](https://www.codefactor.io/repository/github/dylangageot/cmake-project-template/badge)](https://www.codefactor.io/repository/github/dylangageot/cmake-project-template)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkigster%2Fcmake-project-template.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkigster%2Fcmake-project-template?ref=badge_shield)
 # CMake C++ Project Template
 
 > This fork adds a flexible installation system, a code coverage reporting system, and an isolation between sources and compiled files. 
