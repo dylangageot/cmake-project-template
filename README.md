@@ -17,7 +17,7 @@ Do you believe in test-driven development, or at the very lest — write your te
 Divider is a minimal project that's kept deliberately very small. When you build it using CMake/make (see below) it generates:
 
  1. A tiny **static library** `lib/libdivision.a`,
- 2. **A command line binary `bin/divider`**, which links with the library,
+ 2. **A command line binary** `bin/divider`, which links with the library,
  3. **An executable unit test** `bin/run_tests`  using [Google Test library](https://github.com/google/googletest).
 
 ## Usage
