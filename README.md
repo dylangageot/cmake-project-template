@@ -16,10 +16,9 @@ Do you believe in test-driven development, or at the very lest — write your te
 
 Divider is a minimal project that's kept deliberately very small. When you build it using CMake/make (see below) it generates:
 
- 1. A tiny **static library** `lib/libdivision.a`,
- 2. **A command line binary `bin/divider`**, which links with the library,
- 3. **An executable unit test** `bin/divider_tests`  using [Google Test library](https://github.com/google/googletest).
- 4. **An optional BASH build script** `build-and-run` that you can use to quickly test if the project compiles, and runs.
+ 1. A tiny **static library** `libdivision.a`,
+ 2. **A command line binary `divider`**, which links with the library,
+ 3. **An executable unit test** `run_tests`  using [Google Test library](https://github.com/google/googletest).
 
 ## Usage
 
@@ -38,24 +37,14 @@ You will need:
 First we need to check out the git repo:
 
 ```bash
-❯ mkdir ~/workspace
-❯ cd ~/workspace
 ❯ git clone \
-    https://github.com/kigster/cmake-project-template \
+    https://github.com/dylangageot/cmake-project-template \
     my-project
-❯ cd my-project
-❯ bash build-and-run
 ```
-
-The output of this script is rather long and is shown [on this screenshot](doc/build-and-run.png).
-
-The script `build-and-run` is a short-cut — you shouldn't really be using this script to build your project, but see how to do it properly below.
 
 #### Project Structure
 
-There are three empty folders: `lib`, `bin`, and `include`. Those are populated by `make install`.
-
-The rest should be obvious: `src` is the sources, and `test` is where we put our unit tests.
+`src` is the sources, and `test` is where we put our unit tests.
 
 Now we can build this project, and below we show three separate ways to do so.
 
@@ -65,33 +54,13 @@ Now we can build this project, and below we show three separate ways to do so.
 ❯ rm -rf build && mkdir build
 ❯ cd build
 ❯ cmake ..
-❯ make && make install
-❯ cd ..
+❯ make all
 ```
-
 
 #### Running the tests
 
 ```bash
-❯ bin/divider_tests
-[==========] Running 5 tests from 1 test case.
-[----------] Global test environment set-up.
-[----------] 5 tests from DividerTest
-[ RUN      ] DividerTest.5_DivideBy_2
-[       OK ] DividerTest.5_DivideBy_2 (1 ms)
-[ RUN      ] DividerTest.9_DivideBy_3
-[       OK ] DividerTest.9_DivideBy_3 (0 ms)
-[ RUN      ] DividerTest.17_DivideBy_19
-[       OK ] DividerTest.17_DivideBy_19 (0 ms)
-[ RUN      ] DividerTest.Long_DivideBy_Long
-[       OK ] DividerTest.Long_DivideBy_Long (0 ms)
-[ RUN      ] DividerTest.DivisionByZero
-[       OK ] DividerTest.DivisionByZero (0 ms)
-[----------] 5 tests from DividerTest (1 ms total)
-
-[----------] Global test environment tear-down
-[==========] 5 tests from 1 test case ran. (1 ms total)
-[  PASSED  ] 5 tests.
+❯ test/run_tests
 ```
 
 #### Running the CLI Executable
@@ -99,7 +68,7 @@ Now we can build this project, and below we show three separate ways to do so.
 Without arguments, it prints out its usage:
 
 ```bash
-❯ bin/divider
+❯ src/divider
 
 Divider © 2018 Monkey Claps Inc.
 
@@ -114,7 +83,7 @@ Description:
 But with arguments, it computes as expected the denominator:
 
 ```bash
-❯ bin/divider 112443477 12309324
+❯ src/divider 112443477 12309324
 
 Divider © 2018 Monkey Claps Inc.
 
@@ -129,10 +98,6 @@ Remainder: 112443477 % 12309324 = 1659561
 CLion should automatically detect the top level `CMakeLists.txt` file and provide you with the full set of build targets.
 
 Select menu option **Build   ➜ Build Project**, and then **Build ➜ Install**.
-
-![CLION](doc/cmake-clion.png)
-
-The above screenshot is an example of CLion with this project open.
 
 ### Using it as a C++ Library
 
@@ -154,23 +119,13 @@ std::cout << "Remainder of the division is " << r.remainder;
 ## File Locations
 
  * `src/*` — C++ code that ultimately compiles into a library
- * `test/lib` — C++ libraries used for tests (eg, Google Test)
- * `test/src` — C++ test suite
- * `bin/`, `lib`, `include` are all empty directories, until the `make install` install the project artifacts there.
+ * `test/src` — C++ test suite.
 
 Tests:
 
  * A `test` folder with the automated tests and fixtures that mimics the directory structure of `src`.
  * For every C++ file in `src/A/B/<name>.cpp` there is a corresponding test file `test/A/B/<name>_test.cpp`
- * Tests compile into a single binary `test/bin/runner` that is run on a command line to run the tests.
-
-#### Contributing
-
-**Pull Requests are WELCOME!** Please submit any fixes or improvements, and I promise to review it as soon as I can at the project URL:
-
- * [Project Github Home](https://github.com/kigster/cmake-project-template)
- * [Submit Issues](https://github.com/kigster/cmake-project-template/issues)
- * [Pull Requests](https://github.com/kigster/cmake-project-template/pulls)
+ * Tests compile into a single binary `test/run_tests` that is run on a command line to run the tests.
 
 ### License
 
