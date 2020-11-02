@@ -7,20 +7,19 @@ addons:
     packages:
       - lcov
 
-before_install:
-    - eval "${MATRIX_EVAL}"
-
 script:
-  - mkdir -p build/run
-  - cd build/run
-  - cmake ../.. -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
-  - make install
-  - ./test/divider_tests
+  # Build the project and run tests
+  - mkdir -p build
+  - cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
+  - make all
+  - ./test/run_tests
 
 after_success:
   # Create lcov report
   - lcov --capture --directory . --output-file coverage.info
-  - lcov --remove coverage.info '/usr/*' '*gtest*' --output-file coverage.info # remove external libraries from coverage
+  # Remove external libraries from coverage information file
+  - lcov --remove coverage.info '/usr/*' '*gtest*' --output-file coverage.info
   # Uploading report to CodeCov
   - bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 

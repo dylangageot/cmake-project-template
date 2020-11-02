@@ -43,7 +43,7 @@ divider.header() {
 
 divider.setup() {
   hl.subtle "Creating Build Folder..."
-  run "mkdir -p build/run"
+  run "mkdir -p build"
 
   [[ -f .idea/workspace.xml ]] || cp .idea/workspace.xml.example .idea/workspace.xml
 }
@@ -54,8 +54,8 @@ divider.clean() {
 }
 
 divider.build() {
-  run "cd build/run"
-  run "cmake ../.. "
+  run "cd build"
+  run "cmake .. "
   run.set-next show-output-on
   run "make -j 12"
   run "make install | egrep -v 'gmock|gtest'"
@@ -63,11 +63,11 @@ divider.build() {
 }
 
 divider.tests() {
-  if [[ -f build/run/test/divider_tests ]]; then
+  if [[ -f build/test/run_tests ]]; then
     run.set-next show-output-on
-    run "echo && build/run/test/divider_tests"
+    run "echo && build/test/run_tests"
   else
-    printf "${bldred}Can't find installed executable ${bldylw}build/run/test/divider_tests.${clr}\n"
+    printf "${bldred}Can't find installed executable ${bldylw}build/test/run_tests.${clr}\n"
     exit 2
   fi
 }
