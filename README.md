@@ -16,9 +16,9 @@ Do you believe in test-driven development, or at the very lest — write your te
 
 Divider is a minimal project that's kept deliberately very small. When you build it using CMake/make (see below) it generates:
 
- 1. A tiny **static library** `libdivision.a`,
- 2. **A command line binary `divider`**, which links with the library,
- 3. **An executable unit test** `run_tests`  using [Google Test library](https://github.com/google/googletest).
+ 1. A tiny **static library** `lib/libdivision.a`,
+ 2. **A command line binary `bin/divider`**, which links with the library,
+ 3. **An executable unit test** `bin/run_tests`  using [Google Test library](https://github.com/google/googletest).
 
 ## Usage
 
@@ -59,16 +59,18 @@ Now we can build this project, and below we show three separate ways to do so.
 
 #### Running the tests
 
+In the `build` directory, run the following command:
+
 ```bash
-❯ test/run_tests
+❯ bin/run_tests
 ```
 
 #### Running the CLI Executable
 
-Without arguments, it prints out its usage:
+Still in the `build` directory, without arguments, it prints out its usage:
 
 ```bash
-❯ src/divider
+❯ bin/divider
 
 Divider © 2018 Monkey Claps Inc.
 
@@ -83,7 +85,7 @@ Description:
 But with arguments, it computes as expected the denominator:
 
 ```bash
-❯ src/divider 112443477 12309324
+❯ bin/divider 112443477 12309324
 
 Divider © 2018 Monkey Claps Inc.
 

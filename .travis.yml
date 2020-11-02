@@ -13,7 +13,7 @@ script:
   - cd build
   - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
   - make all
-  - ./test/run_tests
+  - bin/run_tests
 
 after_success:
   # Create lcov report
