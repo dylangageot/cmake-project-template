@@ -46,7 +46,7 @@ First we need to check out the git repo:
 
 `src` is the sources, and `test` is where we put our unit tests.
 
-Now we can build this project, and below we show three separate ways to do so.
+Now we can build this project, and below we show two separate ways to do so.
 
 #### Building Manually
 
@@ -116,6 +116,13 @@ DivisionResult r = Division(f).divide();
 
 std::cout << "Result of the division is " << r.division;
 std::cout << "Remainder of the division is " << r.remainder;
+```
+
+To link against the static library and include header directories in the project, add those lines in your `CMakeLists.txt` file:
+
+```CMake
+find_package(division REQUIRED)
+target_link_libraries(<your_target> PUBLIC division)
 ```
 
 ## File Locations
