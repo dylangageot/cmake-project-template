@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
+
 project(run_tests)
 
 # Download and unpack googletest at configure time
@@ -36,4 +37,4 @@ endif()
 set(SOURCE_FILES src/divider_tests.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME} division gtest_main)
+target_link_libraries(${PROJECT_NAME} PUBLIC division gtest_main)
