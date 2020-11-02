@@ -52,25 +52,24 @@ Now we can build this project, and below we show two separate ways to do so.
 
 ```bash
 ❯ rm -rf build && mkdir build
-❯ cd build
+❯ pushd build
 ❯ cmake ..
 ❯ make all
+❯ popd
 ```
 
 #### Running the tests
 
-In the `build` directory, run the following command:
-
 ```bash
-❯ bin/run_tests
+❯ build/bin/run_tests
 ```
 
 #### Running the CLI Executable
 
-Still in the `build` directory, without arguments, it prints out its usage:
+Without arguments, it prints out its usage:
 
 ```bash
-❯ bin/divider
+❯ build/bin/divider
 
 Divider © 2018 Monkey Claps Inc.
 
@@ -85,12 +84,31 @@ Description:
 But with arguments, it computes as expected the denominator:
 
 ```bash
-❯ bin/divider 112443477 12309324
+❯ build/bin/divider 112443477 12309324
 
 Divider © 2018 Monkey Claps Inc.
 
 Division : 112443477 / 12309324 = 9
 Remainder: 112443477 % 12309324 = 1659561
+```
+
+#### Installing binaries and libraries
+
+To install the binary and the static library on the system, run the following commands:
+
+```bash
+❯ pushd build
+❯ sudo make install
+❯ popd
+```
+
+If you want to install in another location than system path, define the CMake variable `CMAKE_INSTALL_PREFIX` to specify the installation directory. As an example, the following commands will install files in `/tmp/local`:
+
+```bash
+❯ pushd build
+❯ cmake .. -DCMAKE_INSTALL_PREFIX=/tmp/local
+❯ make install
+❯ popd
 ```
 
 ### Building in CLion
@@ -99,7 +117,7 @@ Remainder: 112443477 % 12309324 = 1659561
 
 CLion should automatically detect the top level `CMakeLists.txt` file and provide you with the full set of build targets.
 
-Select menu option **Build   ➜ Build Project**, and then **Build ➜ Install**.
+Select menu option **Build   ➜ Build Project**.
 
 ### Using it as a C++ Library
 
@@ -118,7 +136,7 @@ std::cout << "Result of the division is " << r.division;
 std::cout << "Remainder of the division is " << r.remainder;
 ```
 
-To link against the static library and include header directories in the project, add those lines in your `CMakeLists.txt` file:
+To link against the static library that has been installed in the previous step of this guide, add those lines in your `CMakeLists.txt` file:
 
 ```CMake
 find_package(division REQUIRED)
@@ -134,7 +152,7 @@ Tests:
 
  * A `test` folder with the automated tests and fixtures that mimics the directory structure of `src`.
  * For every C++ file in `src/A/B/<name>.cpp` there is a corresponding test file `test/A/B/<name>_test.cpp`
- * Tests compile into a single binary `test/run_tests` that is run on a command line to run the tests.
+ * Tests compile into a single binary `build/bin/run_tests` that is run on a command line to run the tests.
 
 ### License
 
