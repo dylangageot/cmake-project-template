@@ -4,7 +4,7 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkigster%2Fcmake-project-template.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkigster%2Fcmake-project-template?ref=badge_shield)
 # CMake C++ Project Template
 
-> This fork adds a flexible installation system, a code coverage reporting system, and an isolation between sources and compiled files. 
+> This fork adds a flexible installation system, code coverage, and an isolation between sources and compiled files within the project structure. 
 
 ### Division with a remainder library
 
@@ -132,6 +132,10 @@ CLion should automatically detect the top level `CMakeLists.txt` file and provid
 
 Select menu option **Build   ➜ Build Project**.
 
+#### Code coverage
+
+If you want to get the code coverage of your code, you have to set the option `CODE_COVERAGE` to `ON` in the CMake options. To do so, select menu option **File   ➜ Settings...**, then within **Build, Execution, Deployment** select **CMake**. In the **Debug** profile tab, add `-DCODE_COVERAGE=ON` in the field **CMake options**. Finally, press **Ok** and select menu option **Run ➜ Run 'run_tests' with Coverage** to start retrieving code coverage information from unit tests.
+
 ### Using it as a C++ Library
 
 We build a static library that, given a simple fraction will return the integer result of the division, and the remainder.
@@ -140,7 +144,7 @@ We can use it from C++ like so:
 
 ```cpp
 #include <iostream>
-#include <division>
+#include <division.h>
 
 Fraction       f = Fraction{25, 7};
 DivisionResult r = Division(f).divide();
