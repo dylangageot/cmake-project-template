@@ -53,6 +53,7 @@ Now we can build this project, and below we show two separate ways to do so.
 #### Building Manually
 
 ```bash
+❯ cd my-project
 ❯ rm -rf build && mkdir build
 ❯ pushd build
 ❯ cmake ..
