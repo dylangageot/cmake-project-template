@@ -134,7 +134,7 @@ Select menu option **Build   ➜ Build Project**.
 
 #### Code coverage
 
-If you want to get the code coverage of your code, you have to set the option `CODE_COVERAGE` to `ON` in the CMake options. To do so, select menu option **File   ➜ Settings...**, then within **Build, Execution, Deployment** select **CMake**. In the **Debug** profile tab, add `-DCODE_COVERAGE=ON` in the field **CMake options**. Finally, press **Ok** and select menu option **Run ➜ Run 'run_tests' with Coverage** to start retrieving code coverage information from unit tests.
+If you want to get the code coverage, you have to set the option `CODE_COVERAGE` to `ON` in the CMake options. To do so, select menu option **File   ➜ Settings...**, then within **Build, Execution, Deployment** select **CMake**. In the **Debug** profile tab, add `-DCODE_COVERAGE=ON` in the field **CMake options**. Finally, press **Ok** and select menu option **Run ➜ Run 'run_tests' with Coverage** to start retrieving code coverage information from unit tests.
 
 ### Using it as a C++ Library
 
